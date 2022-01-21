@@ -1,11 +1,12 @@
 class ApplicationController < ActionController::Base
     #CELLL
+
     def current_user
-        @current_user ||= User.find_by(session: session[:session_token])
+        @current_user ||= User.find_by(session_token: session[:session_token])
     end
 
     def ensure_logged_in
-        redirect_to new_session_url unless logged_in?
+        redirect_to new_sessions_url unless logged_in?
     end
 
     def login!(user)
